@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.swing.text.html.Option;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -21,7 +23,7 @@ public class PersonController {
     }
 
     @PostMapping
-    public void addPerson(@RequestBody Person person){
+    public void addPerson(@Valid @NotNull @RequestBody Person person){
         personService.addPerson(person);
     }
 
@@ -31,5 +33,14 @@ public class PersonController {
     @GetMapping(path = "{id}")
     public Person selectByIdPeople(@PathVariable("id") UUID id){
         return personService.getPersonById(id).orElse(null);
+    }
+    @DeleteMapping(path = "{id}")
+    public void deleteByIdPeople(@PathVariable("id") UUID id){
+        personService.deletePerson(id);
+    }
+
+    @DeleteMapping(path = "{id}")
+    public void updateByIdPeople(@PathVariable("id") UUID id, @Valid @NotNull @RequestBody Person person){
+        personService.updatePerson(id, person);
     }
 }
