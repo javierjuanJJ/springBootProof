@@ -26,7 +26,7 @@ public class PersonController {
     public void addPerson(@Valid @NotNull @RequestBody Person person){
         personService.addPerson(person);
     }
-
+    @GetMapping
     public List<Person> selectAllPeople(){
         return personService.selectAllPeople();
     }
@@ -39,7 +39,7 @@ public class PersonController {
         personService.deletePerson(id);
     }
 
-    @DeleteMapping(path = "{id}")
+    @PutMapping(path = "{id}")
     public void updateByIdPeople(@PathVariable("id") UUID id, @Valid @NotNull @RequestBody Person person){
         personService.updatePerson(id, person);
     }
