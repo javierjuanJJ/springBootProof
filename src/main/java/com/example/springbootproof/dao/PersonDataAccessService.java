@@ -1,6 +1,7 @@
 package com.example.springbootproof.dao;
 
 import com.example.springbootproof.model.Person;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +12,7 @@ import java.util.UUID;
 @Repository("postgres")
 public class PersonDataAccessService implements PersonDAO {
     private final JdbcTemplate jdbcTemplate;
-
+    @Autowired
     public PersonDataAccessService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
