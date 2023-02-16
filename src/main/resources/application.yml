@@ -4,7 +4,7 @@ spring:
 
 app:
   datasource:
-    jdbc-url: jdbc:postgresql://192.168.1.41:5433/
+    jdbc-url: jdbc:postgresql://localhost:5432/
     username: postgres
     password: password
     pool-size: 30
